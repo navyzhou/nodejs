@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>源辰信息</title>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="shortcut icon" href="images/yclogo.png" type="image/x-icon" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/ajaxfileupload.js"></script>
+<script src="js/showpic.js"></script>
+<script>
+    function addUser(){
+        var uname=$("#uname").val();
+        var pwd=$("#pwd").val();
+
+        $.ajaxFileUpload({
+            url:"addUserInfo", //图片处理地址
+            secureuri:false,
+            fileElementId:["photo"],  //图片文本框的id
+            data:{uname:uname,pwd:pwd},
+            dataType:"json",
+            success:function(dt,status){ //成功响应
+                if(parseInt(dt)==1){
+                    $("#uname").val("");
+                    $("#pwd").val("");
+                    location.href="back/show.html";
+                }else{
+                    alert("用户信息注册失败....");
+                }
+            },
+            error:function(dt, status, e){ //失败响应
+                alert(dt + " == " + status + "==" + e);
+            }
+        });
+    }
+</script>
+</head>
+
+<body>
+    <form method="post" enctype="multipart/form-data" style="float:left;">
+        <ul>
+            <li><label for="uname">用户名：</label>
+            <input type="text" name="uname" id="uname" value="yc"/></li>
+            <li><label for="pwd">密&nbsp;&nbsp;&nbsp;码：</label>
+            <input type="password" name="pwd" id="pwd" value="a"/></li>
+            <li><label for="pwd">图&nbsp;&nbsp;&nbsp;像：</label>
+                <input type="file" name="photo" id="photo" onchange="previewMultipleImage(this,'news_pic_show')"/></li>
+            <li><input type="button" value="注册" onclick="addUser()"/></li>
+        </ul>
+    </form>
+    <div style="float:right;width:380px;margin-right:20px;">
+        <fieldset id="news_pic_show">
+            <legend>图片预览</legend>
+
+        </fieldset>
+    </div>
+</body>
+</html>

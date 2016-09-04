@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background-color:#E2E2E2;
+	padding:0px;
+	margin:0px auto;
+	width:1000px;
+}
+
+
+*{
+	padding:0px;
+	margin:0px auto;
+	font-size:12px;
+	font-family:"微软雅黑";
+}
+
+form{
+	display: block;
+}
+
+ul{
+	list-style-type: none;
+}
+
+form ul li{
+	margin-top:20px;
+}

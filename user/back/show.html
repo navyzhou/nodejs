@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>源辰信息</title>
+<link rel="stylesheet" type="text/css" href="../css/index.css">
+<link rel="shortcut icon" href="../images/yclogo.png" type="image/x-icon" />
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function(){
+        $.post("showUserInfo",null,function(data){
+            var str="";
+            $.each(data,function(index,item){
+                str+="<tr><td>"+item.usid+"</td><td>"+item.uname+"</td><td>"+item.pwd+"</td><td><img src='../"+item.photo+"' heigh='100px' width='100px'></td></tr>";
+            });
+            $("#userInfo").html("").append($(str));
+        });
+    });
+</script>
+</head>
+
+<body>
+    <table width="80%" border="1px">
+        <thead>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>密码</th>
+            <th>图像</th>
+        </thead>
+        <tbody id="userInfo" align="center">
+
+        </tbody>
+    </table>
+</body>
+</html>
